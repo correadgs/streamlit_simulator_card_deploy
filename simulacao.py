@@ -7,26 +7,26 @@ import io
 
 st.set_page_config(layout="wide", page_title="Simulador de Cartão - Login")
 
-# --- 1. Credenciais de Usuário (Para fins de demonstração) ---
-USERS = {
-    "vendas": "venda123",
-    "admin": "admin456",
-    "João Paulo": "joao456"
-}
+# --- 1. Credenciais de Usuário (Carregadas de st.secrets) ---
+# Access secrets.toml via st.secrets
+# USERS = st.secrets["users"].to_dict() # This converts the section to a dictionary
+# If you have keys with spaces in secrets.toml (e.g., "João Paulo"), you might need to iterate
+USERS = {k.replace('_', ' '): v for k, v in st.secrets["users"].items()}
+
 
 # --- 2. Função de Carregamento das Taxas (Mantida) ---
 csv_files = {
     "Pag Seguro": {
-        "Visa": "dataset/Maquina 1 - Visa.CSV",
-        "Master": "dataset/Maquina 1 - Master.CSV",
-        "Diners": "dataset/Maquina 1 - Diners.CSV",
-        "Demais": "dataset/Maquina 1 - Demais.CSV",
-        "Link": "dataset/Maquina 1 - Link.CSV",
+        "Visa": "dataset\Maquina 1 - Visa.CSV",
+        "Master": "dataset\Maquina 1 - Master.CSV",
+        "Diners": "dataset\Maquina 1 - Diners.CSV",
+        "Demais": "dataset\Maquina 1 - Demais.CSV",
+        "Link": "dataset\Maquina 1 - Link.CSV",
     },
     "Infinity": {
-        "Visa": "dataset/Maquina 2 - Visa.CSV",
-        "Master": "dataset/Maquina 2 - Master.CSV",
-        "Demais": "dataset/Maquina 2 - Demais.CSV",
+        "Visa": "dataset\Maquina 2 - Visa.CSV",
+        "Master": "dataset\Maquina 2 - Master.CSV",
+        "Demais": "dataset\Maquina 2 - Demais.CSV",
     }
 }
 
@@ -107,9 +107,9 @@ def main_simulator_app():
             div[data-testid="stMetric"] {
                 display: flex;
                 flex-direction: column; /* Organiza label e value em coluna */
-                align-items: center;   /* Centraliza horizontalmente */
-                text-align: center;    /* Centraliza o texto dentro do metric */
-                width: 100%;           /* Garante que o metric ocupe a largura total para centralizar */
+                align-items: center;    /* Centraliza horizontalmente */
+                text-align: center;     /* Centraliza o texto dentro do metric */
+                width: 100%;            /* Garante que o metric ocupe a largura total para centralizar */
             }
             /* Garante que o texto do label e do valor também sejam centralizados */
             div[data-testid="stMetric"] label p, div[data-testid="stMetric"] div[data-testid="stMetricValue"] {
