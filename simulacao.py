@@ -21,7 +21,7 @@ csv_files = {
         "Master": "dataset/Maquina 1 - Master.CSV",
         "Diners": "dataset/Maquina 1 - Diners.CSV",
         "Demais": "dataset/Maquina 1 - Demais.CSV",
-        "Link": "rdataset/Maquina 1 - Link.CSV",
+        "Link": "dataset/Maquina 1 - Link.CSV",
     },
     "Infinity": {
         "Visa": "dataset/Maquina 2 - Visa.CSV",
